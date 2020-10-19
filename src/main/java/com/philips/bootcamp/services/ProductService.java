@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.philips.bootcamp.domain.Product;
+import com.philips.bootcamp.dto.ProductDTO;
 
 @Service
 public interface ProductService {
 
     @Autowired
-    public List<Product> findAll();
-    public Product addNewProduct(Product product);
-    public void deleteById(int id );
-    public Product findById(int id); 
+    public List<Product> findAllProducts();
+    public int addNewProduct(ProductDTO product);
+    public void deleteProductByID(int id );
+    public Product findProductByID(int id); 
 }

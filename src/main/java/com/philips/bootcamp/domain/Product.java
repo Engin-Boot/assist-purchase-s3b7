@@ -2,12 +2,15 @@ package com.philips.bootcamp.domain;
 
 import java.sql.Blob;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import com.philips.bootcamp.dto.ProductDTO;
 
+import org.modelmapper.ModelMapper;;
 @Entity
 @Table(name="Product")
 public class Product {
@@ -17,9 +20,12 @@ public class Product {
 	private int ProductID;
 	private String ProductName;
 	private String ProductDescription;
-	private String ProductFeatures;
 	private String ProductCaption;
-    private Blob ProductImage;
+    boolean touchScreenEnabled;
+
+    public Product() {
+
+    }
     
     public int getProductID() {
 		return ProductID;
@@ -33,16 +39,12 @@ public class Product {
         return ProductDescription;
     }
 
-    public String getProductFeatures(){
-        return ProductFeatures;
-    }
-
     public String getProductCaption(){
         return ProductCaption;
     }
 
-    public Blob getProductImage(){
-        return ProductImage;
+    public Boolean getIsTouchScreenEnabled(){
+        return touchScreenEnabled;
     }
 
 	public void setProductID(int id) {
@@ -57,25 +59,27 @@ public class Product {
         this.ProductDescription = ProductDescription;
     }
 
-    public void setProductFeatures(String ProductFeatures){
-        this.ProductFeatures = ProductFeatures;
-    }
-
     public void setProductCaption(String ProductCaption){
         this.ProductCaption = ProductCaption;
     }
 
-    public void setProductImage(Blob ProductImage){
-        this.ProductImage = ProductImage;
+    public void setProductTouchScreenAvailability(Boolean isToucBoolean){
+        this.touchScreenEnabled = isToucBoolean;
     }
     
-    public Product(int ProductID, String ProductName, String ProductDescription, String ProductFeatures, String ProductCaption, Blob ProductImage ) {
+    public Product(int ProductID, String ProductName, String ProductDescription, String ProductCaption, Boolean isToucBoolean ) {
 	    super();
 	    this.ProductID = ProductID;
 	    this.ProductName = ProductName;
 	    this.ProductDescription = ProductDescription;
-	    this.ProductFeatures= ProductFeatures;
 	    this.ProductCaption = ProductCaption;
-	    this.ProductImage = ProductImage;
-	}
+	    this.touchScreenEnabled = isToucBoolean;
+    }
+    
+    public ProductDTO changeEntityToDto(Product product)
+    {
+        final ModelMapper model = new ModelMapper();
+        final ProductDTO productDTO = model.map(product, ProductDTO.class);
+        return productDTO;
+    }
 }

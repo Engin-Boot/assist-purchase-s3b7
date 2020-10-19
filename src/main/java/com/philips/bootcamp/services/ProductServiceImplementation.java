@@ -5,31 +5,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.philips.bootcamp.domain.Product;
+import com.philips.bootcamp.dto.ProductDTO;
+import com.philips.bootcamp.dal.ProductDAO;
 import com.philips.bootcamp.repositories.AdminRepositories;
 
-@Service("productService")
-public class ProductServiceImplementation implements ProductService{
-    
+@Service()
+public class ProductServiceImplementation implements ProductService {
+
     @Autowired
-    private AdminRepositories productRepository;
+    private ProductDAO productDAO;
 
     @Override
-	public List<Product> findAll() {
-		return (List<Product>) productRepository.findAll();
-	}
-
-    @Override
-    public Product addNewProduct(Product product) {
-        return productRepository.save(product);
+    public List<Product> findAllProducts() {
+        return (List<Product>) productDAO.findAll();
     }
 
     @Override
-    public void deleteById(int id) {
-        productRepository.deleteById(id);
+    public int addNewProduct(ProductDTO product) {
+        return productDAO.save(product).getProductID();
     }
 
     @Override
-    public Product findById(int id) {
-        return productRepository.findById(id).get();
+    public void deleteProductByID(int id) {
+        productDAO.deletebyId(id);
+    }
+
+    @Override
+    public Product findProductByID(int id) {
+        return productDAO.findById(id);
     }
 }

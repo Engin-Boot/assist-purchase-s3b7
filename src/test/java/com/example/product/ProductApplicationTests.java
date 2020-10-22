@@ -1,10 +1,10 @@
-package com.philips.bootcamp;
+package com.example.product;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MainTests {
+class ProductApplicationTests {
 
 	@Test
 	void contextLoads() {

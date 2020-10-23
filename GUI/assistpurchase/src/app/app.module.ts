@@ -26,6 +26,7 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { ContactComponent } from './contact/contact.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UpdateproductComponent } from './updateproduct/updateproduct.component'
     ProductdetailsComponent,
     ContactComponent,
     AddproductComponent,
-    UpdateproductComponent
+    UpdateproductComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

@@ -30,6 +30,7 @@ export class ProductdetailsComponent implements OnInit {
       },
       (error)=>{
         console.log(error);
+        this.router.navigate(['/pagenotfound']);
       },
         ()=>{
       console.log("Request compelted");

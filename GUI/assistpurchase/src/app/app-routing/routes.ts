@@ -1,3 +1,4 @@
+import { PagenotfoundComponent } from './../pagenotfound/pagenotfound.component';
 import { UpdateproductComponent } from './../updateproduct/updateproduct.component';
 import { AddproductComponent } from './../addproduct/addproduct.component';
 import { ContactComponent } from './../contact/contact.component';
@@ -17,5 +18,7 @@ export const routes: Routes = [
     {path: 'productdetails/:productId', component: ProductdetailsComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'addproduct', component: AddproductComponent},
-    {path: 'updateproduct/:productId', component: UpdateproductComponent}
+    {path: 'updateproduct/:productId', component: UpdateproductComponent},
+    {path: 'pagenotfound', component: PagenotfoundComponent},
+    {path: '**', pathMatch:'full', component:PagenotfoundComponent}
 ];

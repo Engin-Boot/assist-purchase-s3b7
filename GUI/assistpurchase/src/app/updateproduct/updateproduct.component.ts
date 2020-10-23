@@ -1,4 +1,4 @@
-import { Params, ActivatedRoute } from '@angular/router';
+import { Params, ActivatedRoute, Router} from '@angular/router';
 import { ProductService } from './../services/product.service';
 import { Product, Category} from './../shared/product';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +16,7 @@ export class UpdateproductComponent implements OnInit {
   category = Category;
   id:number;
 
-  constructor(private fb: FormBuilder, private productService: ProductService, private route: ActivatedRoute) { 
+  constructor(private fb: FormBuilder, private productService: ProductService, private route: ActivatedRoute, private router: Router) { 
 
   }
 
@@ -32,6 +32,7 @@ export class UpdateproductComponent implements OnInit {
       },
       (error)=>{
         console.log(error);
+        this.router.navigate(['/pagenotfound']);
       },
         ()=>{
       console.log("Request compelted");

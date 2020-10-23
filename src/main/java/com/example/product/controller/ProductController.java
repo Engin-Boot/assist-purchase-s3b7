@@ -1,5 +1,6 @@
 package com.example.product.controller;
 
+import com.example.product.entity.Alert;
 import com.example.product.entity.Product;
 import com.example.product.exceptions.ProductNotFoundException;
 import com.example.product.service.ProductService;
@@ -67,4 +68,21 @@ public class ProductController {
         Product deletedProduct = productService.deleteProductById(product_id);
         return new ResponseEntity<Product>(deletedProduct, HttpStatus.OK);
     }
+
+    @PostMapping("/createAlert")
+    @CrossOrigin
+    public ResponseEntity<Alert> createAlert(@RequestBody Alert alert) {
+
+        Alert savedAlert = productService.addAlert(alert);
+        return new ResponseEntity<Alert>(savedAlert, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/alerts/all")
+    @CrossOrigin
+    public ResponseEntity<List<Alert>> getAllAlerts(){
+        List<Alert> alerts = productService.getAllAlerts();
+        return new ResponseEntity<List<Alert>>(alerts, HttpStatus.OK);
+    }
+
+
 }

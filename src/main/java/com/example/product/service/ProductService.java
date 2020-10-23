@@ -1,7 +1,9 @@
 package com.example.product.service;
 
+import com.example.product.entity.Alert;
 import com.example.product.entity.Product;
 import com.example.product.exceptions.ProductNotFoundException;
+import com.example.product.repository.AlertRepository;
 import com.example.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,9 +26,12 @@ public class ProductService {
 
     ProductRepository productRepository;
 
+    AlertRepository alertRepository;
+
     @Autowired
-    public ProductService(ProductRepository productRepository){
+    public ProductService(ProductRepository productRepository, AlertRepository alertRepository){
         this.productRepository = productRepository;
+        this.alertRepository = alertRepository;
     }
 
     public List<Product> getAllProducts() {
@@ -64,6 +69,14 @@ public class ProductService {
             return existingProduct;
         }
         return null;
+    }
+
+    public Alert addAlert(Alert newAlert) {
+        return alertRepository.save(newAlert);
+    }
+
+    public List<Alert> getAllAlerts() {
+        return alertRepository.findAll();
     }
 
 

@@ -1,0 +1,14 @@
+mat-card img {
+    object-fit: cover;
+    width: 80%;
+    height: 40%;
+}
+
+.mat-card-content {
+    padding: 10px;
+}
+
+$background-moredark: #4527A0;
+.active {
+    background: $background-moredark;
+}

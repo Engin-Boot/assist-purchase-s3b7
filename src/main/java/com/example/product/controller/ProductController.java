@@ -20,6 +20,7 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/all")
+    @CrossOrigin
     public ResponseEntity<List<Product>> getAllProducts(){
         List<Product> products = productService.getAllProducts();
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
@@ -37,6 +38,7 @@ public class ProductController {
 //    }
 
     @GetMapping("/{product_id}")
+    @CrossOrigin
     public ResponseEntity<Product> getProdById(@PathVariable int product_id)throws Exception
     {
         Product product =  productService.getProductById(product_id);
@@ -44,6 +46,7 @@ public class ProductController {
     }
 
     @PostMapping("/add")
+    @CrossOrigin
     public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
 
         Product savedProduct = productService.addProduct(product);
@@ -51,6 +54,7 @@ public class ProductController {
     }
 
     @PutMapping("/update/{product_id}")
+    @CrossOrigin
     public ResponseEntity<Product> updateProduct(@PathVariable int product_id, @RequestBody Product product ) throws ProductNotFoundException {
 
         Product updatedProduct = productService.updateProduct(product_id, product);
@@ -58,6 +62,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/delete/{product_id}")
+    @CrossOrigin
     public ResponseEntity<Product> deleteProduct(@PathVariable int product_id) throws Exception {
         Product deletedProduct = productService.deleteProductById(product_id);
         return new ResponseEntity<Product>(deletedProduct, HttpStatus.OK);

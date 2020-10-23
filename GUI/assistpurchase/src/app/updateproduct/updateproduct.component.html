@@ -1,0 +1,42 @@
+<div class="detailcontainer" fxLayout="column" fxLayoutGap="10px">
+
+    <div fxflex>
+        <div>
+            <h3>Update Product</h3>
+            <hr>
+        </div>
+    </div>
+
+    <div fxFlex fxFlexOffset="20px" class="form-size">
+
+        <form novalidate [formGroup]="productForm" (ngSubmit)="onSubmit()" *ngIf="productForm">
+            <p>
+                <mat-form-field class="half-width">
+                    <input matInput formControlName="productName" placeholder="Product Name" type="text" required>
+                </mat-form-field>
+                <mat-form-field class="half-width">
+                    <input matInput formControlName="size" placeholder="Screen Size" type="text" required>
+                </mat-form-field>
+            </p>
+            <table class="form-size">
+                <td>
+                    <mat-slide-toggle formControlName="touchscreen">TouchScreen</mat-slide-toggle>
+                </td>
+                <td>
+                    <mat-slide-toggle formControlName="portable">Portable</mat-slide-toggle>
+                </td>
+                <td>
+
+                    <mat-select placeholder="Category" formControlName="category">
+                        <mat-option *ngFor="let ctype of category" [value]="ctype">
+                            {{ ctype }}
+                        </mat-option>
+                    </mat-select>
+
+                </td>
+            </table>
+            <button type="submit" mat-raised-button class="background-primary text-floral-white submitbtn" [disabled]="productForm.invalid">Submit</button>
+        </form>
+    </div>
+
+</div>

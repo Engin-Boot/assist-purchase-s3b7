@@ -1,6 +1,21 @@
 <mat-toolbar color="primary">
     <span></span>
-    <a mat-button>Home</a>
-    <a mat-button>Contact</a>
+    <a mat-button routerLink='/home' routerLinkActive="active">Home</a>
+    <a mat-button routerLink='/contact' routerLinkActive="active">Contact</a>
 
+    <span class="flex-spacer"></span>
+    <button mat-fab routerLink='/addproduct' matTooltip="Add Product">
+        <mat-icon>add</mat-icon>
+      </button>
 </mat-toolbar>
+
+<!-- <div class="container jumbotron" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="start center" fxLayoutAlign.sm="start center" fxLayoutAlign.gt-sm="center center" fxLayoutGap="10px">
+    <div fxFlex fxFlex.gt-sm="70%">
+        <h1>Continuous patient monitoring systems</h1>
+        <p>Philips continuous monitoring portfolio, which includes IntelliVue, Efficia, and Goldway patient monitors* supports a broad patient population – from basic screening and triage to complex surveillance in critical care.</p>
+    </div>
+    <div fxFlex fxFlex.gt-sm="20%">
+        <img src="/assets/images/logo.png" alt="Logo">
+    </div>
+    <div fxFlex></div>
+</div> -->

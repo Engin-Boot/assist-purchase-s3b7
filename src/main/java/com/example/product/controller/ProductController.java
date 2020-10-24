@@ -27,16 +27,11 @@ public class ProductController {
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
-//
-//    /*
-//    This Api returns the list of products  according to user specifications
-//     */
-//    @RequestMapping(method=RequestMethod.GET)
-//    public List<Product> getProductUserSpec(@RequestParam(value="touchscreen") boolean touchscreen, @RequestParam(value="size") int size, @RequestParam(value="category") String category, @RequestParam(value="transportMonitor") boolean transportMonitor) throws Exception{
-//        return service.getProductsAccParameters(touchscreen,size,category,transportMonitor);
-//
-//
-//    }
+    @PostMapping("/search")
+    public ResponseEntity<List<Product>> searchDBForProduct(@RequestBody Product product) throws Exception{
+        List<Product> list1 = productService.searchProductsBasedOnParameter(product);
+        return new ResponseEntity<List<Product>>(list1, HttpStatus.OK);
+    }
 
     @GetMapping("/{product_id}")
     @CrossOrigin
@@ -83,6 +78,4 @@ public class ProductController {
         List<Alert> alerts = productService.getAllAlerts();
         return new ResponseEntity<List<Alert>>(alerts, HttpStatus.OK);
     }
-
-
 }

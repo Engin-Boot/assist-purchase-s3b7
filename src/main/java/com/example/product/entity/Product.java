@@ -17,17 +17,17 @@ public class Product {
     private String category;
 
     @Column
-    private boolean touchscreen;
+    private Boolean touchscreen;
 
     @Column
     private int size;
 
     @Column
-    private boolean portable;
+    private Boolean portable;
 
     public Product(){}
 
-    public Product(int productId, String productName, String category, boolean touchscreen, int size, boolean portable) {
+    public Product(int productId, String productName, String category, Boolean touchscreen, int size, Boolean portable) {
         this.productId = productId;
         this.productName = productName;
         this.category = category;
@@ -60,11 +60,11 @@ public class Product {
         this.category = category;
     }
 
-    public boolean isTouchscreen() {
+    public Boolean isTouchscreen() {
         return touchscreen;
     }
 
-    public void setTouchscreen(boolean touchscreen) {
+    public void setTouchscreen(Boolean touchscreen) {
         this.touchscreen = touchscreen;
     }
 
@@ -76,11 +76,11 @@ public class Product {
         this.size = size;
     }
 
-    public boolean isPortable() {
+    public Boolean isPortable() {
         return portable;
     }
 
-    public void setPortable(boolean portable) {
+    public void setPortable(Boolean portable) {
         this.portable = portable;
     }
 }

@@ -1,0 +1,48 @@
+<div class="chatbot">
+    <p>hi i am chatbot</p>
+    <section class="example-section" *ngIf="checkcategory=='category'">
+        <label class="example-margin">Category:</label>
+
+        <mat-select placeholder="{{categorylist[0]}}" [formControl]="selectedcategory">
+            <mat-option *ngFor="let ctype of categorylist" [value]="ctype">
+                {{ ctype }}
+            </mat-option>
+        </mat-select>
+    </section>
+
+    <section class="example-section" *ngIf="checkportable=='portable'">
+        <label class="example-margin">Portable</label>
+        <mat-select placeholder="{{booleanoption[0]}}" [formControl]="selectedportable">
+            <mat-option *ngFor="let booltype of booleanoption" [value]="booltype">
+                {{ booltype }}
+            </mat-option>
+        </mat-select>
+    </section>
+
+    <section class="example-section" *ngIf="checktouchscreen=='touchscreen'">
+        <label class="example-margin">Touchscreen</label>
+        <mat-select placeholder="{{booleanoption[0]}}" [formControl]="selectedtouchscreen">
+            <mat-option *ngFor="let booltype of booleanoption" [value]="booltype">
+                {{ booltype }}
+            </mat-option>
+        </mat-select>
+    </section>
+
+    <section class="example-section" *ngIf="checksize=='screensize'">
+        <label class="example-margin">Screen Size</label>
+        <mat-select placeholder="{{screensize[0]}}" [formControl]="selectedsize">
+            <mat-option *ngFor="let size of screensize" [value]="size">
+                {{ size }}
+            </mat-option>
+        </mat-select>
+    </section>
+
+    <mat-form-field class="half-width">
+        <input matInput [formControl]="searchtext" placeholder="Search" type="text" required>
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="onclick()">Search Spec</button>
+    <button mat-button color="primary" (click)="onFilter()">Filter Products</button>
+
+
+</div>

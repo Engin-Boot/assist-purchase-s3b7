@@ -1,7 +1,7 @@
+import { Product } from './../shared/product';
 import { Observable } from 'rxjs';
 import { ProductService } from '../services/product.service';
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../shared/product';
 import { Params, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     observableStream.subscribe(
       (responseData: any)=>{
         this.products = responseData;
+        
       },
       (error)=>{
         console.log(error);
@@ -29,5 +30,6 @@ export class HomeComponent implements OnInit {
       console.log("Request compelted");
   })
   }
+
 
 }

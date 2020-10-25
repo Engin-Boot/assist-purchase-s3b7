@@ -1,3 +1,4 @@
+import { SearchResultComponent } from './../search-result/search-result.component';
 import { PagenotfoundComponent } from './../pagenotfound/pagenotfound.component';
 import { UpdateproductComponent } from './../updateproduct/updateproduct.component';
 import { AddproductComponent } from './../addproduct/addproduct.component';
@@ -20,5 +21,6 @@ export const routes: Routes = [
     {path: 'addproduct', component: AddproductComponent},
     {path: 'updateproduct/:productId', component: UpdateproductComponent},
     {path: 'pagenotfound', component: PagenotfoundComponent},
+    {path: 'searchresult', component: SearchResultComponent},
     {path: '**', pathMatch:'full', component:PagenotfoundComponent}
 ];

@@ -79,6 +79,9 @@ public class ProductService {
 
     public void storeAllProductsInList(){
         allProducts = getAllProducts();
+        for(int i=0;i<allProducts.size();i++) {
+        	System.out.println(allProducts.get(i).getProductName());
+        }
     }
 
     public void getProductsTouchScreen(Boolean touchscreen){

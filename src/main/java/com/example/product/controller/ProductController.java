@@ -28,8 +28,16 @@ public class ProductController {
     }
 
     @PostMapping("/search")
+    @CrossOrigin
     public ResponseEntity<List<Product>> searchDBForProduct(@RequestBody Product product) throws Exception{
         List<Product> list1 = productService.searchProductsBasedOnParameter(product);
+        System.out.println("Category"+product.getCategory());
+        System.out.println("size: "+product.getSize());
+        System.out.println("portable: "+product.isPortable());
+        System.out.println("Touchscreen: "+product.isTouchscreen());
+        if(list1.isEmpty()) {
+        	System.out.println("list is empty");
+        }
         return new ResponseEntity<List<Product>>(list1, HttpStatus.OK);
     }
 

@@ -11,12 +11,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRadioModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import 'hammerjs';
 import { AppComponent } from './app.component';
@@ -27,6 +29,8 @@ import { ContactComponent } from './contact/contact.component';
 import { AddproductComponent } from './addproduct/addproduct.component';
 import { UpdateproductComponent } from './updateproduct/updateproduct.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     ContactComponent,
     AddproductComponent,
     UpdateproductComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    ChatbotComponent,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,9 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HttpClientModule,
     MatSlideToggleModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [
     ProductService

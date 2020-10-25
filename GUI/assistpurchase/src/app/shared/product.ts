@@ -7,4 +7,8 @@ export interface Product {
     portable:boolean;
 }
 
-export const Category = ['Efficia','Intellivue','Goldway'];
+export const Category = ['Any','Efficia','Intellivue','Goldway'];
+
+export const BooleanOption = ['Any', true, false];
+
+export const SIZE = ['Any', 7, 8 , 9 , 10 , 11, 12];

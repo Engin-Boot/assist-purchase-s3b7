@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductdetailsComponent implements OnInit {
 
   product: Observable<Product>;
+  productName:string
   id:number;
 
   constructor(private productService: ProductService,
@@ -27,6 +28,7 @@ export class ProductdetailsComponent implements OnInit {
     observableStream.subscribe(
       (responseData: any)=>{
         this.product = responseData;
+        this.productName = responseData.productName;
       },
       (error)=>{
         console.log(error);
@@ -51,6 +53,23 @@ export class ProductdetailsComponent implements OnInit {
       this.router.navigate(['/home']);
   })
   }
+
+  createAlert(){
+    let observableStream = this.productService.addAlert(this.id, this.productName);
+    observableStream.subscribe(
+      (responseData: any)=>{
+        console.log(responseData);
+      },
+      (error)=>{
+        console.log(error);
+      },
+        ()=>{
+      console.log("Request compelted");
+      alert("We will contact you Soon! Thanks for your Interest")
+      this.router.navigate(['/home']);
+  })
+  }
+
   goBack(): void {
     this.location.back();
   }

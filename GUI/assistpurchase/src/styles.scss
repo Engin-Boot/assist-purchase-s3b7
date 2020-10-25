@@ -41,6 +41,7 @@ body {
 }
 
 .container {
+    flex-direction: row;
     width: 70%;
     margin: 20px;
     display: flex;
@@ -53,4 +54,10 @@ body {
 .detailcontainer {
     margin: 20px;
     display: flex;
+}
+
+.flex-spacerdel {
+    float: right;
+    padding-right: 10px;
+    margin-bottom: 20px;
 }

@@ -1,8 +1,10 @@
+import { ChatCategory, ChatPortable, ChatSize, ChatTouchScreen, Botreply } from './../shared/chatbotconst';
 import { Router } from '@angular/router';
 import { ProductService } from './../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Product, Category, BooleanOption, SIZE} from './../shared/product';
 import { FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-chatbot',
   templateUrl: './chatbot.component.html',
@@ -20,15 +22,23 @@ export class ChatbotComponent implements OnInit {
   selectedsize = new FormControl();
   searchtext = new FormControl();
 
+  chat:string;
   checkcategory:string;
   checkportable:string;
   checktouchscreen:string;
   checksize:string;
 
+  checkchipcat = null;
+  checkchipport = null;
+  checkchipsize = null;
+  checkchiptouch = null;
+  
 
-  constructor(private productservice: ProductService, private router: Router) { }
+
+  constructor(private productservice: ProductService, public router: Router) { }
 
   ngOnInit(): void {
+    this.chat = Botreply[0];
     this.checkcategory = 'category';
     this.checkportable = 'portable';
     this.checktouchscreen = 'touchscreen';
@@ -37,16 +47,56 @@ export class ChatbotComponent implements OnInit {
 
   onclick(){
     let text = this.searchtext.value.toLowerCase();
-    if(text == 'category' || text == 'portable' || text == 'touchscreen' || text == 'screensize'){
-      console.log(this.searchtext.value);
-      this.checkcategory = text;
-      this.checkportable = text;
-      this.checktouchscreen = text;
-      this.checksize = text;
+    if(text!=null){
+      this.chat = Botreply[1];
     }
-    else{
-      this.ngOnInit();
+    var userresp = text.split(' ');
+    userresp.every(val => {if (ChatCategory.includes(val)){
+      this.checkcategory = ChatCategory[0];
+      this.chat += ChatCategory[0]+' ';
+      return false;
+    }else{
+      this.checkcategory = null;
+      return true;
     }
+  });
+
+    userresp.every(val => {if (ChatPortable.includes(val)){
+      console.log("hi portable")
+      this.checkportable = ChatPortable[0];
+      this.chat += ChatPortable[0]+' ';
+      return false;
+    }else{
+      this.checkportable = null;
+      return true;
+    }
+  });
+
+    userresp.every(val => {if (ChatSize.includes(val)){
+      this.checksize = ChatSize[0];
+      this.chat += ChatSize[0]+' ';
+      return false;
+    }else{
+      this.checksize = null;
+      return true;
+    }
+  });
+
+    userresp.every(val => {if (ChatTouchScreen.includes(val)){
+      this.checktouchscreen = ChatTouchScreen[0];
+      this.chat += ChatTouchScreen[0]+' ';
+      return false;
+    }else{
+      this.checktouchscreen = null;
+      return true;
+    }
+  });
+
+
+   if(this.checkcategory == null && this.checkportable == null && this.checksize == null && this.checktouchscreen==null){
+    this.ngOnInit();
+    this.chat = Botreply[2];
+   }
   }
 
   onFilter(){
@@ -54,6 +104,20 @@ export class ChatbotComponent implements OnInit {
     this.router.navigate(['searchresult'])
   }
 
+  changeChipCat(){
+    this.checkchipcat = 'category';
+  }
 
+  changeChipPort(){
+    this.checkchipport = 'portable';
+  }
+
+  changeChipSize(){
+    this.checkchipsize = 'screensize';
+  }
+
+  changeChipTouch(){
+    this.checkchiptouch = 'touchscreen';
+  }
 
 }

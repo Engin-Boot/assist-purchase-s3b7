@@ -11,7 +11,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatRadioModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MatChipsModule} from '@angular/material/chips';
+
 
 import 'hammerjs';
 import { AppComponent } from './app.component';
@@ -65,7 +67,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatCheckboxModule,
-    MatRadioModule
+    DragDropModule,
+    MatChipsModule
   ],
   providers: [
     ProductService

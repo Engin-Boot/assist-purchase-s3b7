@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Params, ActivatedRoute, Router} from '@angular/router';
+import { Params, ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 import { Location } from '@angular/common';
 import { ProductService } from './../services/product.service';
 import { Product } from './../shared/product';
@@ -15,11 +15,22 @@ export class ProductdetailsComponent implements OnInit {
   product: Observable<Product>;
   productName:string
   id:number;
-
+  mySubscription: any;
   constructor(private productService: ProductService,
     private route: ActivatedRoute,
     private location: Location,
-    private router: Router) { }
+    private router: Router) {
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
+      
+      this.mySubscription = this.router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          // Trick the Router into believing it's last link wasn't previously loaded
+          this.router.navigated = false;
+        }
+      });
+     }
 
 
   ngOnInit(): void {
@@ -72,5 +83,11 @@ export class ProductdetailsComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  ngOnDestroy() {
+    if (this.mySubscription) {
+      this.mySubscription.unsubscribe();
+    }
   }
 }

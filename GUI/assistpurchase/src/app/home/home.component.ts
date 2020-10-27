@@ -1,6 +1,6 @@
+import { ProductService } from './../services/product.service';
 import { Product } from './../shared/product';
 import { Observable } from 'rxjs';
-import { ProductService } from '../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     observableStream.subscribe(
       (responseData: any)=>{
         this.products = responseData;
-        
+        this.productService.setLatest(responseData);
       },
       (error)=>{
         console.log(error);

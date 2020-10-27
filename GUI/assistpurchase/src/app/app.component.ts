@@ -5,6 +5,18 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'alertcare';
+export class AppComponent{
+  title = 'AssistPurchase';
+  showchatbot:boolean;
+  constructor(){
+    this.showchatbot = false;
+  }
+
+  onclick(){
+    if(this.showchatbot==false){
+    this.showchatbot = true;
+    }else{
+      this.showchatbot = false;
+    }
+  }
 }

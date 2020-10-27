@@ -33,6 +33,7 @@ import { UpdateproductComponent } from './updateproduct/updateproduct.component'
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { LatestproductComponent } from './latestproduct/latestproduct.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     UpdateproductComponent,
     PagenotfoundComponent,
     ChatbotComponent,
-    SearchResultComponent
+    SearchResultComponent,
+    LatestproductComponent
   ],
   imports: [
     BrowserModule,

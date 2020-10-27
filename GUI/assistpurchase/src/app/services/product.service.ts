@@ -4,7 +4,8 @@ import { Product } from './../shared/product';
 import { Alert } from './../shared/alert';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,24 +14,16 @@ export class ProductService {
   usersUrl:string;
   httpClient: HttpClient;
   searchedresult:Observable<Product[]>;
+  latest: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(null);
 
   constructor(httpClient: HttpClient) { 
     this.httpClient = httpClient;
     this.usersUrl = 'http://localhost:8080/products';
   }
 
-  // getProducts(){
-  //   let observableStream = this.httpClient.get(`${this.usersUrl}/all`);
-  //   return observableStream;
-  //   }
-
     getProducts(): Observable<Product[]> {
       return this.httpClient.get<Product[]>(`${this.usersUrl}/all`);
     }
-
-  // getProducts(): Product[]{
-  //   return PRODUCTS;
-  // }
 
   getProductById(id: number):Observable<Product> {
     return this.httpClient.get<Product>(`${this.usersUrl}/${id}`);
@@ -80,5 +73,11 @@ export class ProductService {
     return formcontrol.value;
   }
 
+  // setLatest(product: Product[]){
+  //   this.latest = product;
+  // }
 
+  public setLatest(newValue: Product[]): void {
+    this.latest.next(Object.assign([], newValue));
+  }
 }

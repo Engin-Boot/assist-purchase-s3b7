@@ -15,7 +15,7 @@
                     <input matInput formControlName="productName" placeholder="Product Name" type="text" required>
                 </mat-form-field>
                 <mat-form-field class="half-width">
-                    <input matInput formControlName="size" placeholder="Screen Size" type="number" required>
+                    <input matInput formControlName="size" placeholder="Screen Size" type="number" min="7" max="12" onkeyup="if(parseInt(this.value)>12 || parseInt(this.value)<7 ){ this.value =12; return false; }" required>
                 </mat-form-field>
             </p>
             <table class="form-size">

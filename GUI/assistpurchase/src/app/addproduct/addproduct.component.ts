@@ -1,6 +1,9 @@
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { LatestproductComponent } from './../latestproduct/latestproduct.component';
 import { ProductService } from './../services/product.service';
 import { Product, Category} from './../shared/product';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-addproduct',
@@ -9,16 +12,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddproductComponent implements OnInit {
 
-  productForm: FormGroup
+  productForm: FormGroup;
   product: Product;
   category = Category;
-  // productName:string;
-  // category:string;
-  // touchscreen = false;
-  // size:number;
-  // portable:boolean;
 
-  constructor(private fb: FormBuilder, private productService: ProductService) { 
+  constructor(private fb: FormBuilder, private productService: ProductService, private router: Router) { 
     this.createForm();
   }
 
@@ -39,7 +37,6 @@ export class AddproductComponent implements OnInit {
   onSubmit(){
     this.product = this.productForm.value;
     console.log(this.product);
-
     let observableStream = this.productService.addProduct(this.product);
 
     observableStream.subscribe(
@@ -52,7 +49,6 @@ export class AddproductComponent implements OnInit {
         ()=>{
       console.log("Request compelted");
     })
-
     alert("Product Added Successfully");
     this.productForm.reset({
       id: 0,
@@ -62,5 +58,6 @@ export class AddproductComponent implements OnInit {
       size: 9,
       portable:false,
     });
+    this.router.navigate(['/home']);
   }
 }

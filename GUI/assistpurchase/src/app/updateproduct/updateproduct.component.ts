@@ -70,6 +70,7 @@ export class UpdateproductComponent implements OnInit {
     })
 
     alert("Product updated Successfully");
+    this.router.navigate(['/home']);
   }
 
 }

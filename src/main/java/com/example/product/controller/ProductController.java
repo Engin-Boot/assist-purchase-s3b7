@@ -31,10 +31,6 @@ public class ProductController {
     @CrossOrigin
     public ResponseEntity<List<Product>> searchDBForProduct(@RequestBody Product product) throws Exception{
         List<Product> list1 = productService.searchProductsBasedOnParameter(product);
-        System.out.println("Category"+product.getCategory());
-        System.out.println("size: "+product.getSize());
-        System.out.println("portable: "+product.isPortable());
-        System.out.println("Touchscreen: "+product.isTouchscreen());
         if(list1.isEmpty()) {
         	System.out.println("list is empty");
         }
@@ -43,8 +39,7 @@ public class ProductController {
 
     @GetMapping("/{product_id}")
     @CrossOrigin
-    public ResponseEntity<Product> getProdById(@PathVariable int product_id)throws Exception
-    {
+    public ResponseEntity<Product> getProdById(@PathVariable int product_id)throws Exception {
         Product product =  productService.getProductById(product_id);
         return new ResponseEntity<Product>(product, HttpStatus.OK);
     }
@@ -52,7 +47,6 @@ public class ProductController {
     @PostMapping("/add")
     @CrossOrigin
     public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
-
         Product savedProduct = productService.addProduct(product);
         return new ResponseEntity<Product>(savedProduct, HttpStatus.CREATED);
     }
@@ -60,7 +54,6 @@ public class ProductController {
     @PutMapping("/update/{product_id}")
     @CrossOrigin
     public ResponseEntity<Product> updateProduct(@PathVariable int product_id, @RequestBody Product product ) throws ProductNotFoundException {
-
         Product updatedProduct = productService.updateProduct(product_id, product);
         return new ResponseEntity<Product>(updatedProduct, HttpStatus.OK);
     }
@@ -75,7 +68,6 @@ public class ProductController {
     @PostMapping("/createAlert")
     @CrossOrigin
     public ResponseEntity<Alert> createAlert(@RequestBody Alert alert) {
-
         Alert savedAlert = productService.addAlert(alert);
         return new ResponseEntity<Alert>(savedAlert, HttpStatus.CREATED);
     }

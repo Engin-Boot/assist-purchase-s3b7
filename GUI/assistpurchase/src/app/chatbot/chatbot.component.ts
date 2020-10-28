@@ -93,10 +93,14 @@ export class ChatbotComponent implements OnInit {
   });
 
 
-   if(this.checkcategory == null && this.checkportable == null && this.checksize == null && this.checktouchscreen==null){
-    this.ngOnInit();
-    this.chat = Botreply[2];
-   }
+    if(this.checkInvalidSearchParameters()){
+      this.ngOnInit();
+      this.chat = Botreply[2];
+    } 
+  }
+
+  checkInvalidSearchParameters(): boolean {
+    return (this.checkcategory == null && this.checkportable == null && this.checksize == null && this.checktouchscreen==null);
   }
 
   onFilter(){

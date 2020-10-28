@@ -12,11 +12,13 @@ export class AppComponent{
     this.showchatbot = false;
   }
 
-  onclick(){
+  onclick(element){
     if(this.showchatbot==false){
     this.showchatbot = true;
+    element.textContent = "Close ChatBot";
     }else{
       this.showchatbot = false;
+      element.textContent = "Open ChatBot";
     }
   }
 }

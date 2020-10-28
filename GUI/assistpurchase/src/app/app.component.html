@@ -1,5 +1,5 @@
 <app-header></app-header>
-<button mat-raised-button color="primary" class="chatbotbtn" (click)="onclick()">Open ChatBot</button>
+<button mat-raised-button color="primary" class="chatbotbtn" (click)="onclick($event.target)">Open ChatBot</button>
 <app-chatbot *ngIf="showchatbot"></app-chatbot>
 <app-latestproduct *ngIf="!showchatbot"></app-latestproduct>
 <router-outlet></router-outlet>

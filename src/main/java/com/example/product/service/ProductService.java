@@ -77,14 +77,11 @@ public class ProductService {
         return alertRepository.findAll();
     }
 
-    public void storeAllProductsInList(){
+    private void storeAllProductsInList(){
         allProducts = getAllProducts();
-        for(int i=0;i<allProducts.size();i++) {
-        	System.out.println(allProducts.get(i).getProductName());
-        }
     }
 
-    public void getProductsTouchScreen(Boolean touchscreen){
+    private void getProductsTouchScreen(Boolean touchscreen){
         List<Product> productList = allProducts;
         if(touchscreen != null) {
             for (int i = 0; i < productList.size(); i++) {
@@ -100,7 +97,7 @@ public class ProductService {
     }
 
 
-    public void getProductsSize(int size){
+    private void getProductsSize(int size){
         List<Product> productList = allProducts;
         if(size != 0) {
             for (int i = 0; i < productList.size(); i++) {
@@ -115,7 +112,7 @@ public class ProductService {
 
 
 
-    public void getProductsCategory(String category){
+    private void getProductsCategory(String category){
         List<Product> productList = allProducts;
         if(category != null) {
             for (int i = 0; i < productList.size(); i++) {
@@ -128,7 +125,7 @@ public class ProductService {
         }
     }
 
-    public void getProductsPortable(Boolean portable){
+    private void getProductsPortable(Boolean portable){
         List<Product> productList = allProducts;
         if(portable != null) {
             for (int i = 0; i < productList.size(); i++) {
@@ -143,7 +140,7 @@ public class ProductService {
     }
 
 
-    public Set<Product> getProductSpecs(){
+    private Set<Product> getProductSpecs(){
         Set<Product> intersectionSet1=categoryList.stream().distinct().filter(portableList::contains)
                 .collect(Collectors.toSet());
         Set<Product> intersectionSet2=touchscreenList.stream().distinct().filter(sizeList::contains)
@@ -152,7 +149,7 @@ public class ProductService {
         return intersectionSet1;
     }
 
-    public void initializeLists(){
+    private void initializeLists(){
         touchscreenList = new ArrayList<>();
         sizeList = new ArrayList<>();
         categoryList = new ArrayList<>();

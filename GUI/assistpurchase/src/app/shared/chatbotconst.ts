@@ -24,7 +24,7 @@ export const ChatTouchScreen = [
 ]
 
 export const Botreply = [
-    'Hello User ! you can filter products based on \n 1. category \n2. size \n3. portable \n4. TouchScreen',
+    'Hello User ! you can filter products based on \n1. category \n2. size \n3. portable \n4. TouchScreen',
     'You can now filter on: ',
     'Invalid Choice Kindly Try again'
 ]

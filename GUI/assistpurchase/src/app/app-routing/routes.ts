@@ -7,10 +7,7 @@ import { Component } from '@angular/core';
 import { ProductdetailsComponent } from './../productdetails/productdetails.component';
 import { Routes } from '@angular/router';
 
-// import { MenuComponent } from '../menu/menu.component';
 import { HomeComponent } from '../home/home.component';
-// import { AboutComponent } from '../about/about.component';
-// import { ContactComponent } from '../contact/contact.component';
 
 
 export const routes: Routes = [
@@ -22,5 +19,5 @@ export const routes: Routes = [
     {path: 'updateproduct/:productId', component: UpdateproductComponent},
     {path: 'pagenotfound', component: PagenotfoundComponent},
     {path: 'searchresult', component: SearchResultComponent},
-    {path: '**', pathMatch:'full', component:PagenotfoundComponent}
+    {path: '**', redirectTo: '/pagenotfound', pathMatch: 'full'}
 ];
